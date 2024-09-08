@@ -50,6 +50,19 @@ function generateCV() {
     document.getElementById('fbDesign').setAttribute("href", fbLink.value);
     document.getElementById('linkDesign').setAttribute("href", linkedInLink.value);
     document.getElementById('gitDesign').setAttribute("href", githubLink.value);
+    // Handle profile image upload
+    const profileFieldInput = document.getElementById('profileField');
+    if (profileFieldInput && profileFieldInput.files && profileFieldInput.files.length > 0) {
+        const profileField = profileFieldInput.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(profileField);
+        reader.onloadend = function () {
+            const profileImage = document.getElementById('profile');
+            if (profileImage) {
+                profileImage.src = reader.result;
+            }
+        };
+    }
     // Display education information
     const academicFields = document.querySelectorAll('.academic-field');
     let educationList = "";
@@ -77,7 +90,6 @@ function generateCV() {
 }
 // Function to print the generated CV
 function printCV() {
-    console.log("Print CV function called");
     window.print(); // Open the print dialog
 }
 // Adding event listeners when DOM is fully loaded
