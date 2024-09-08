@@ -182,6 +182,14 @@ ul li {
   border-radius: 5px;
 }
 
+label{
+  font-weight: bold;
+}
+
+h2{
+  margin: 20px 0;
+}
+
 /* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
   .row, .design-row {
